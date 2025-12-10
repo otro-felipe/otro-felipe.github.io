@@ -11,6 +11,7 @@ import {
   Grid,
   IconButton,
   InputAdornment,
+  GlobalStyles,
   Paper,
   Stack,
   TextField,
@@ -28,7 +29,8 @@ const markdownToHtml = (content) => ({
 const markdownToPlainText = (content = '') =>
   content
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/[*_`]/g, '');
+    .replace(/[*_`]/g, '')
+    .replace(/<[^>]+>/g, '');
 
 const normalizeSections = (section) => {
   if (!section) return [];
@@ -156,7 +158,10 @@ function RiftboundRules() {
     if (!normalizedSearch) return entries;
 
     return entries.filter((entry) => {
-      const searchableChunks = [entry.title, entry.short_answer];
+      const searchableChunks = [
+        markdownToPlainText(entry.title),
+        markdownToPlainText(entry.short_answer)
+      ];
       const sections = normalizeSections(entry.detail_section);
 
       sections.forEach((section) => {
@@ -186,12 +191,35 @@ function RiftboundRules() {
   }, [entries, normalizedSearch]);
 
   return (
-    <Container maxWidth="md" sx={{ py: { xs: 4, md: 8 } }}>
-      <Stack spacing={4}>
-        <Paper
-          sx={{
-            p: { xs: 3, md: 4 },
-            bgcolor: 'rgba(148, 163, 184, 0.08)',
+    <>
+      <GlobalStyles
+        styles={{
+          '[data-keyword-bgreen]': {
+            position: 'relative',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minWidth: '2.25rem',
+            padding: '0.2rem 0.4rem',
+            fontSize: '0.75rem',
+            fontWeight: 1000,
+            textTransform: 'uppercase',
+            color: '#000000',
+            margin: '0 0.25rem',
+            textAlign: 'center',
+            backgroundColor: '#14e06d',
+            boxShadow: '0 0 0 1px rgba(15, 23, 42, 0.2)',
+            transform: 'skewX(-20deg)',
+            borderRadius: 4
+          }
+        }}
+      />
+      <Container maxWidth="md" sx={{ py: { xs: 4, md: 8 } }}>
+        <Stack spacing={4}>
+          <Paper
+            sx={{
+              p: { xs: 3, md: 4 },
+              bgcolor: 'rgba(148, 163, 184, 0.08)',
             backdropFilter: 'blur(8px)'
           }}
         >
@@ -234,22 +262,30 @@ function RiftboundRules() {
 
         <Stack spacing={2}>
           {filteredEntries.map((entry, index) => {
-            const entryId = entry.title;
+            const titleHtml = entry.title ?? '';
+            const shortAnswerHtml = entry.short_answer ?? '';
+            const plainTitle = markdownToPlainText(titleHtml);
+            const entryId = plainTitle || titleHtml;
             const isOpen = openItems.has(entryId);
             const detailSections = normalizeSections(entry.detail_section);
             const panelId = `question-details-${index}`;
 
             return (
-              <Card key={entry.title}>
+              <Card key={entryId}>
                 <CardContent>
                   <Stack direction="row" spacing={2} alignItems="flex-start">
                     <Box sx={{ flex: 1 }}>
-                      <Typography variant="h6" component="h2">
-                        {entry.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                        {entry.short_answer}
-                      </Typography>
+                      <Typography
+                        variant="h6"
+                        component="h2"
+                        dangerouslySetInnerHTML={{ __html: titleHtml }}
+                      />
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{ mt: 1 }}
+                        dangerouslySetInnerHTML={{ __html: shortAnswerHtml }}
+                      />
                     </Box>
                     <IconButton
                       onClick={() => toggleItem(entryId)}
@@ -270,7 +306,7 @@ function RiftboundRules() {
                   <CardContent id={panelId}>
                     <Stack spacing={3}>
                       {detailSections.map((section, sectionIndex) => (
-                        <DetailSection section={section} key={`${entry.title}-${sectionIndex}`} />
+                        <DetailSection section={section} key={`${entryId}-${sectionIndex}`} />
                       ))}
                     </Stack>
                   </CardContent>
@@ -286,8 +322,9 @@ function RiftboundRules() {
             </Paper>
           )}
         </Stack>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </>
   );
 }
 

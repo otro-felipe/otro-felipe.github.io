@@ -74,5 +74,57 @@
         ]
       }
     ]
+  },
+  {
+    "title": "¿Puedo reaccionar cuando una unidad <span data-keyword-bgreen><span>Temporary</span></span> va a morir?",
+    "short_answer": "Sí. <span data-keyword-bgreen><span>Temporary</span></span> es una habilidad disparada, así que puedes responder antes de que la unidad salga del campo.",
+    "detail_section": [
+      {
+        "type": "text",
+        "text": "La palabra clave <span data-keyword-bgreen><span>Temporary</span></span> representa un *trigger*. Cuando empieza la Fase de Comienzo de su controlador, la habilidad se agrega a la cadena y, si llega a resolverse, destruye la unidad. Mientras ese disparo esté pendiente, todavía hay ventanas para reaccionar."
+      },
+      {
+        "type": "card_image",
+        "cards": [
+          {
+            "url": "https://static.dotgg.gg/riftbound/cards/OGN-241.webp",
+            "text": "**Shen** — *REACTION (Play any time, even before spells and abilities resolve, including to a battlefield you control.) SHIELD 2 (+2 might while I'm a defender.) TANK (I must be assigned combat damage first.)*"
+          },
+          {
+            "url": "https://static.dotgg.gg/riftbound/cards/OGN-169.webp",
+            "text": "**Gust** — *REACTION (Play any time, even before spells and abilities resolve.) Return a unit at a battlefield with 3 might or less to its owner's hand.*"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Como el trigger de <span data-keyword-bgreen><span>Temporary</span></span> ocurre antes de puntuar, puedes reaccionar con **Shen** para que entre al battlefield donde está tu unidad con <span data-keyword-bgreen><span>Temporary</span></span>: el permanente no muere hasta que la habilidad se resuelva, así que conservas el control mientras esperas. Del mismo modo, si hay otra unidad con 3 o menos de Might, puedes responder con *Gust* y devolverla a la mano de tu oponente para impedir que anote por *hold*."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "742",
+            "text": "Temporary"
+          },
+          {
+            "number": "742.1",
+            "text": "Temporary is a Triggered Ability keyword."
+          },
+          {
+            "number": "742.1.a",
+            "text": "It is present on Permanents."
+          },
+          {
+            "number": "742.1.b",
+            "text": "It is functionally short for \"At the start of this permanent's controller's Beginning Phase, before scoring, kill this.\""
+          },
+          {
+            "number": "742.1.c",
+            "text": "The Trigger Condition is the controller of the permanent's Beginning Phase occurring."
+          }
+        ]
+      }
+    ]
   }
 ]

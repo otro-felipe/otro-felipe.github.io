@@ -8,3 +8,4 @@
 - Usa el tema central en `src/theme/appTheme.js` para cambiar estilos globales (colores, `borderRadius`, etc.) en vez de duplicar overrides en cada componente.
 - Usa siempre el `Grid` estándar (`@mui/material/Grid`) salvo que el proyecto indique explícitamente `Grid2`; mezclar ambos rompe la compatibilidad y el layout existente.
 - Los comandos de búsqueda y de acceso al sistema de archivos pueden ejecutarse directamente en la máquina; reserva `docker compose run --rm web <comando>` para interactuar con la aplicación o sus dependencias.
+- Al trabajar con imágenes de cartas, construye las URLs siguiendo el formato existente (`https://static.dotgg.gg/riftbound/cards/<CÓDIGO>.webp`) y mejora la redacción final manteniendo la lógica de reglas proporcionada por el usuario.
