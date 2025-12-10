@@ -1,0 +1,49 @@
+[
+  {
+    "title": "¿Qué objetivo tiene este compendio de reglas?",
+    "short_answer": "Este documento busca condensar preguntas frecuentes y responderlas basándonos en las reglas oficiales.",
+    "detail_section": {
+      "type": "text",
+      "text": "La intención es mantener un repositorio vivo de respuestas rápidas respaldadas por el reglamento de *Riftbound*. Si encuentras un caso no cubierto, [envía una nota](https://github.com/otro-felipe/otro-felipe.github.io/issues/new) para revisarlo en la siguiente actualización."
+    }
+  },
+  {
+    "title": "¿En qué orden se resuelven las reacciones encadenadas?",
+    "short_answer": "Se resuelven siguiendo el orden de prioridad indicado en la sección de reacciones, respetando primero al jugador activo.",
+    "detail_section": {
+      "type": "rule_reference",
+      "rules": [
+        {
+          "number": "453.1",
+          "text": "Cuando varias reacciones intentan resolverse al mismo tiempo, el jugador activo elige el orden."
+        },
+        {
+          "number": "453.1.a",
+          "text": "Si dos reacciones pertenecen al mismo jugador, ese jugador define la prioridad entre ellas."
+        },
+        {
+          "number": "453.1.a.1",
+          "text": "Cuando una reacción haga referencia explícita a otra, sigue la instrucción escrita sin alterar el orden general."
+        }
+      ]
+    }
+  },
+  {
+    "title": "¿Cómo se presentan las cartas con erratas vigentes?",
+    "short_answer": "Se muestran con la imagen oficial y cualquier errata asociada justo debajo para diferenciar la regla actualizada.",
+    "detail_section": {
+      "type": "card_image",
+      "cards": [
+        {
+          "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=400&q=80",
+          "text": "**Escudo Resonante** — Reduce el daño recibido en 2 mientras esté activo.",
+          "errata": "Errata 2024-02: El escudo ya no previene daño de efectos que no sean ataques."
+        },
+        {
+          "url": "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=400&q=80",
+          "text": "**Orbe Inestable** — Inflige 1 daño a todas las unidades adyacentes al final de tu turno."
+        }
+      ]
+    }
+  }
+]
