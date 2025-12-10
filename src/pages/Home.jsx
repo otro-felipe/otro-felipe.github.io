@@ -15,8 +15,8 @@ import { Link as RouterLink } from 'react-router-dom';
 
 const projects = [
   {
-    title: 'Riftbound Rules',
-    description: 'Compilación de reglas y referencias para Riftbound.',
+    title: 'FAQ Riftbound Chile',
+    description: 'Compilación de reglas, preguntas frecuentes y referencias oficiales para Riftbound.',
     to: '/reglas-riftbound',
     image: '/img/riftbound.svg',
     imageAlt: 'Logo de Riftbound'
@@ -62,7 +62,7 @@ function Home() {
                 variant="body1"
                 color="text.secondary"
               >
-                Desarrollador y entusiasta de los juegos de rol. Aquí comparto proyectos, reglas y recursos que voy creando.
+                Ingeniero Civil en Computación, desarrollador de software y líder técnico. Me apasionan los videojuegos y los TCG, así como también la música y la ciencia. En esta GitHub Page comparto los proyectos personales que voy realizando.
               </Typography>
             </Stack>
             <Divider flexItem sx={{ width: { xs: '100%', md: 'auto' } }} />
