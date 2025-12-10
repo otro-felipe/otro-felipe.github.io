@@ -19,3 +19,13 @@ await rm(docsDir, { recursive: true, force: true });
 await mkdir(docsDir, { recursive: true });
 await cp(distDir, docsDir, { recursive: true });
 console.log('Carpeta docs actualizada correctamente.');
+
+const indexHtmlPath = resolve(docsDir, 'index.html');
+const notFoundPath = resolve(docsDir, '404.html');
+
+if (existsSync(indexHtmlPath)) {
+  await cp(indexHtmlPath, notFoundPath);
+  console.log('Archivo 404.html generado para compatibilidad con rutas.');
+} else {
+  console.warn('No se encontró index.html en docs; no se pudo generar 404.html.');
+}
