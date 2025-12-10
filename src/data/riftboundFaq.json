@@ -4,7 +4,7 @@
     "short_answer": "Este documento reúne dudas frecuentes y ofrece respuestas apoyadas en las reglas oficiales de Riftbound.",
     "detail_section": {
       "type": "text",
-      "text": "La idea es mantener un repositorio vivo de respuestas rápidas respaldadas por el reglamento de *Riftbound*. Si encuentras un caso que no esté cubierto, coméntalo en el grupo de jueces o en el chat de dudas de la comunidad **Riftbound Chile** en WhatsApp para incorporarlo en futuras actualizaciones."
+      "text": "Este compendio no es un documento oficial; fue creado por la comunidad para facilitar la comprensión de las reglas y, en juego organizado, la última palabra siempre la tendrá la jueza o el juez a cargo del evento. La idea es mantener un repositorio vivo de respuestas rápidas respaldadas por el reglamento de *Riftbound*. Si encuentras un caso que no esté cubierto, coméntalo en el grupo de jueces o en el chat de dudas de la comunidad **Riftbound Chile** en WhatsApp para incorporarlo en futuras actualizaciones."
     }
   },
   {
@@ -122,6 +122,65 @@
           {
             "number": "742.1.c",
             "text": "The Trigger Condition is the controller of the permanent's Beginning Phase occurring."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "¿Qué pasa si olvido un trigger?",
+    "short_answer": "Si fue en el turno actual, el siguiente jugador decide si te deja resolverlo; aun así el juego cuenta el trigger y puede implicar un warning.",
+    "detail_section": [
+      {
+        "type": "text",
+        "text": "Para que un trigger olvidado pueda resolverse tarde, debes detectarlo antes de que termine el mismo turno en que ocurrió. En ese caso, el siguiente jugador en el orden de turnos elige si permite que se resuelva inmediatamente o si continúa sin él. Si el trigger todavía no ha afectado al juego, la decisión final sobre permitirlo recae en la jueza o el juez responsable."
+      },
+      {
+        "type": "text",
+        "text": "Si el trigger beneficiaba a tu oponente, omitirlo te deja con un [Warning]. En torneos casuales se anima a los jugadores a permitir la resolución atrasada, pero en eventos *High OPL* no existe esa obligación."
+      },
+      {
+        "type": "text",
+        "text": "Incluso cuando el trigger no se ejecuta, el juego lo considera como si hubiese ocurrido para otros efectos que cuenten la cantidad de veces que se dispara o que chequeen si el trigger ya se ha disparado antes. Los triggers olvidados se clasifican como *missed triggers*, un subtipo de *Gameplay Error*."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "702.2",
+            "text": "Missed Trigger [No Penalty]: A player controls a triggered ability and doesn’t demonstrate awareness of the trigger before the first time it would affect the game in a visible fashion."
+          },
+          {
+            "number": "702.2.a",
+            "text": "See 506 for definition of triggered abilities."
+          },
+          {
+            "number": "702.2.b",
+            "text": "After the initial point at which a triggered ability is missed, any further errors related to that trigger are considered a General Error instead. See 702.15 for more information about General Errors."
+          },
+          {
+            "number": "702.2.c",
+            "text": "Players may not cause triggered abilities controlled by an opponent to be missed by taking game actions or otherwise prematurely advancing the game, including through otherwise acceptable shortcuts."
+          },
+          {
+            "number": "702.2.d",
+            "text": "A triggered ability is considered to have triggered even if it was subsequently missed. Effects that count or restrict the number of times that ability can trigger will count the missed one."
+          },
+          {
+            "number": "702.2.e",
+            "text": "If missing the trigger was advantageous for the controller, and they own the card source of the trigger, this penalty is a [Warning] instead."
+          },
+          {
+            "number": "702.2.f",
+            "text": "Remedies."
+          },
+          {
+            "number": "702.2.f.1",
+            "text": "If a trigger is missed in a previous turn, instruct the players to continue playing."
+          },
+          {
+            "number": "702.2.f.2",
+            "text": "Otherwise, the next opponent in turn order of the player who missed the trigger chooses whether to resolve the trigger immediately or miss it altogether."
           }
         ]
       }
