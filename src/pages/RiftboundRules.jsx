@@ -22,15 +22,89 @@ import faqEntries from '../data/riftboundFaq.json';
 
 marked.setOptions({ breaks: true });
 
-const markdownToHtml = (content) => ({
-  __html: marked.parse(content ?? '')
-});
+const KEYWORD_TOKEN_PATTERN = /\[\[KEYWORD\|([a-z]+)\|([^\]]+)\]\]/gi;
 
-const markdownToPlainText = (content = '') =>
-  content
+const createKeywordToken = (tone, label) =>
+  `[[KEYWORD|${tone}|${label.trim()}]]`;
+
+const normalizeKeywordLabel = (base, rawSuffix = '') => {
+  const suffix = rawSuffix?.trim() ?? '';
+  return suffix ? `${base} ${suffix.toUpperCase()}` : base;
+};
+
+const keywordPlaceholderRules = [
+  {
+    regex: /<reaction\s*>/gi,
+    color: 'green',
+    getLabel: () => 'REACTION'
+  },
+  {
+    regex: /<shield\s*([+\d]+)?\s*>/gi,
+    color: 'pink',
+    getLabel: (_, value = '') => normalizeKeywordLabel('SHIELD', value)
+  },
+  {
+    regex: /<assault\s*([+\d]+)?\s*>/gi,
+    color: 'pink',
+    getLabel: (_, value = '') => normalizeKeywordLabel('ASSAULT', value)
+  },
+  {
+    regex: /<tank\s*>/gi,
+    color: 'pink',
+    getLabel: () => 'TANK'
+  },
+  {
+    regex: /<deflect\s*>/gi,
+    color: 'bgreen',
+    getLabel: () => 'DEFLECT'
+  },
+  {
+    regex: /<temporary\s*>/gi,
+    color: 'bgreen',
+    getLabel: () => 'TEMPORARY'
+  }
+];
+
+const tokenizeContent = (content = '', _mode = 'general') =>
+  keywordPlaceholderRules.reduce((text, rule) => {
+    return text.replace(rule.regex, (...args) =>
+      createKeywordToken(rule.color, rule.getLabel(...args))
+    );
+  }, content ?? '');
+
+const detokenizeContent = (html = '') =>
+  html.replace(KEYWORD_TOKEN_PATTERN, (_, tone, label) => {
+    return `<span data-keyword-${tone}><span>${label}</span></span>`;
+  });
+
+const replaceKeywordTokensWithLabels = (content = '') =>
+  content.replace(KEYWORD_TOKEN_PATTERN, (_, __, label) => label);
+
+const markdownToHtml = (
+  content,
+  { decorateKeywords = false, decoratorMode = 'general', inline = false } = {}
+) => {
+  const source = content ?? '';
+  const prepared = decorateKeywords
+    ? tokenizeContent(source, decoratorMode)
+    : source;
+  const parsed = inline ? marked.parseInline(prepared) : marked.parse(prepared);
+  const withKeywords = decorateKeywords ? detokenizeContent(parsed) : parsed;
+
+  return {
+    __html: withKeywords
+  };
+};
+
+const replaceKeywordPlaceholdersWithLabels = (content = '', mode = 'general') =>
+  replaceKeywordTokensWithLabels(tokenizeContent(content, mode));
+
+const markdownToPlainText = (content = '', { mode = 'general' } = {}) =>
+  replaceKeywordPlaceholdersWithLabels(content, mode)
     .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
     .replace(/[*_`]/g, '')
-    .replace(/<[^>]+>/g, '');
+    .replace(/<[^>]+>/g, '')
+    .trim();
 
 const normalizeSections = (section) => {
   if (!section) return [];
@@ -58,7 +132,15 @@ const RuleReferenceSection = ({ rules }) => {
               <Typography fontWeight={600}>{rule.number}</Typography>
             </Grid>
             <Grid size={{ xs: 12, sm: 10 }} sx={{ pl: { xs: 0, sm: textIndent } }}>
-              <Typography color="text.secondary">{rule.text}</Typography>
+              <Typography
+                color="text.secondary"
+                component="div"
+                dangerouslySetInnerHTML={markdownToHtml(rule.text, {
+                  decorateKeywords: true,
+                  decoratorMode: 'general',
+                  inline: true
+                })}
+              />
             </Grid>
           </Grid>
         );
@@ -78,7 +160,7 @@ const CardImageSection = ({ cards }) => {
       justifyContent={{ xs: 'center', sm: 'space-around' }}
     >
       {cards.map((card, index) => {
-        const plainAltText = markdownToPlainText(card.text);
+        const plainAltText = markdownToPlainText(card.text, { mode: 'card' });
 
         return (
           <Grid
@@ -99,14 +181,25 @@ const CardImageSection = ({ cards }) => {
                 }}
               />
               <Box
-                sx={{ color: 'text.primary' }}
+                sx={{ color: 'text.primary', fontSize: '0.8125rem', lineHeight: 1.4 }}
                 component="div"
-                dangerouslySetInnerHTML={markdownToHtml(card.text)}
+                dangerouslySetInnerHTML={markdownToHtml(card.text, {
+                  decorateKeywords: true,
+                  decoratorMode: 'card'
+                })}
               />
               {card.errata && (
-                <Typography variant="body2" color="warning.main" sx={{ fontStyle: 'italic' }}>
-                  {card.errata}
-                </Typography>
+                <Typography
+                  variant="body2"
+                  color="warning.main"
+                  sx={{ fontStyle: 'italic' }}
+                  component="div"
+                  dangerouslySetInnerHTML={markdownToHtml(card.errata, {
+                    decorateKeywords: true,
+                    decoratorMode: 'general',
+                    inline: true
+                  })}
+                />
               )}
             </Stack>
           </Grid>
@@ -123,7 +216,10 @@ const DetailSection = ({ section }) => {
         <Box
           component="div"
           sx={{ color: 'text.secondary' }}
-          dangerouslySetInnerHTML={markdownToHtml(section.text)}
+          dangerouslySetInnerHTML={markdownToHtml(section.text, {
+            decorateKeywords: true,
+            decoratorMode: 'general'
+          })}
         />
       );
     case 'rule_reference':
@@ -159,25 +255,36 @@ function RiftboundRules() {
 
     return entries.filter((entry) => {
       const searchableChunks = [
-        markdownToPlainText(entry.title),
-        markdownToPlainText(entry.short_answer)
+        markdownToPlainText(entry.title, { mode: 'general' }),
+        markdownToPlainText(entry.short_answer, { mode: 'general' })
       ];
       const sections = normalizeSections(entry.detail_section);
 
       sections.forEach((section) => {
         switch (section.type) {
           case 'text':
-            searchableChunks.push(markdownToPlainText(section.text));
+            searchableChunks.push(
+              markdownToPlainText(section.text, { mode: 'general' })
+            );
             break;
           case 'rule_reference':
             section.rules?.forEach((rule) => {
-              searchableChunks.push(rule.number, rule.text);
+              searchableChunks.push(
+                rule.number,
+                markdownToPlainText(rule.text, { mode: 'general' })
+              );
             });
             break;
           case 'card_image':
             section.cards?.forEach((card) => {
-              searchableChunks.push(markdownToPlainText(card.text));
-              if (card.errata) searchableChunks.push(card.errata);
+              searchableChunks.push(
+                markdownToPlainText(card.text, { mode: 'card' })
+              );
+              if (card.errata) {
+                searchableChunks.push(
+                  markdownToPlainText(card.errata, { mode: 'general' })
+                );
+              }
             });
             break;
           default:
@@ -194,7 +301,7 @@ function RiftboundRules() {
     <>
       <GlobalStyles
         styles={{
-          '[data-keyword-bgreen]': {
+          '[data-keyword-bgreen], [data-keyword-green], [data-keyword-pink]': {
             position: 'relative',
             display: 'inline-flex',
             alignItems: 'center',
@@ -204,13 +311,23 @@ function RiftboundRules() {
             fontSize: '0.75rem',
             fontWeight: 1000,
             textTransform: 'uppercase',
-            color: '#000000',
+            color: '#FFFFFF',
             margin: '0 0.25rem',
             textAlign: 'center',
-            backgroundColor: '#14e06d',
+            fontStyle: 'normal',
             boxShadow: '0 0 0 1px rgba(15, 23, 42, 0.2)',
             transform: 'skewX(-20deg)',
             borderRadius: 4
+          },
+          '[data-keyword-bgreen]': {
+            backgroundColor: '#14e06d',
+            color: '#000000'
+          },
+          '[data-keyword-green]': {
+            backgroundColor: '#258338'
+          },
+          '[data-keyword-pink]': {
+            backgroundColor: '#e53277'
           }
         }}
       />
@@ -262,10 +379,20 @@ function RiftboundRules() {
 
         <Stack spacing={2}>
           {filteredEntries.map((entry, index) => {
-            const titleHtml = entry.title ?? '';
-            const shortAnswerHtml = entry.short_answer ?? '';
-            const plainTitle = markdownToPlainText(titleHtml);
-            const entryId = plainTitle || titleHtml;
+            const titleContent = entry.title ?? '';
+            const shortAnswerContent = entry.short_answer ?? '';
+            const plainTitle = markdownToPlainText(titleContent, { mode: 'general' });
+            const entryId = plainTitle || titleContent;
+            const decoratedTitle = markdownToHtml(titleContent, {
+              decorateKeywords: true,
+              decoratorMode: 'general',
+              inline: true
+            });
+            const decoratedShortAnswer = markdownToHtml(shortAnswerContent, {
+              decorateKeywords: true,
+              decoratorMode: 'general',
+              inline: true
+            });
             const isOpen = openItems.has(entryId);
             const detailSections = normalizeSections(entry.detail_section);
             const panelId = `question-details-${index}`;
@@ -278,13 +405,13 @@ function RiftboundRules() {
                       <Typography
                         variant="h6"
                         component="h2"
-                        dangerouslySetInnerHTML={{ __html: titleHtml }}
+                        dangerouslySetInnerHTML={decoratedTitle}
                       />
                       <Typography
                         variant="body2"
                         color="text.secondary"
                         sx={{ mt: 1 }}
-                        dangerouslySetInnerHTML={{ __html: shortAnswerHtml }}
+                        dangerouslySetInnerHTML={decoratedShortAnswer}
                       />
                     </Box>
                     <IconButton

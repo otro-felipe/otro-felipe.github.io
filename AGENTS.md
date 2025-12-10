@@ -9,3 +9,4 @@
 - Usa siempre el `Grid` estándar (`@mui/material/Grid`) salvo que el proyecto indique explícitamente `Grid2`; mezclar ambos rompe la compatibilidad y el layout existente.
 - Los comandos de búsqueda y de acceso al sistema de archivos pueden ejecutarse directamente en la máquina; reserva `docker compose run --rm web <comando>` para interactuar con la aplicación o sus dependencias.
 - Al trabajar con imágenes de cartas, construye las URLs siguiendo el formato existente (`https://static.dotgg.gg/riftbound/cards/<CÓDIGO>.webp`) y mejora la redacción final manteniendo la lógica de reglas proporcionada por el usuario.
+- Para resaltar keywords, usa exclusivamente los marcadores `<reaction>`, `<shield n>`, `<assault n>`, `<tank>`, `<deflect>` y `<temporary>` (insensibles a mayúsculas); son los únicos reconocidos por el decorador. Mantén esta política de toma de notas actualizada si cambia.
