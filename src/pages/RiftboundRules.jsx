@@ -307,7 +307,7 @@ function RiftboundRules() {
             alignItems: 'center',
             justifyContent: 'center',
             minWidth: '2.25rem',
-            padding: '0.2rem 0.4rem',
+            padding: '0.1rem 0.3rem',
             fontSize: '0.75rem',
             fontWeight: 1000,
             textTransform: 'uppercase',
