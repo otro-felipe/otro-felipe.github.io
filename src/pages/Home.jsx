@@ -1,12 +1,33 @@
 import Grid from '@mui/material/Grid';
-import { Avatar, Card, CardActionArea, CardContent, Container, Divider, Paper, Stack, Typography } from '@mui/material';
+import {
+  Avatar,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Container,
+  Divider,
+  Paper,
+  Stack,
+  Typography
+} from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 
 const projects = [
   {
     title: 'Riftbound Rules',
     description: 'Compilación de reglas y referencias para Riftbound.',
-    to: '/reglas-rigtbound'
+    to: '/reglas-riftbound',
+    image: '/img/riftbound.svg',
+    imageAlt: 'Logo de Riftbound'
+  },
+  {
+    title: 'Escúchame en Spotify',
+    description:
+      'Compongo y grabo mi propia música. Fuerte influencia del género emo pop punk (coloquialmente conocido como emo).',
+    href: 'https://open.spotify.com/artist/0IohiuiKUbTVN4KW9I8sWm?si=e0784257099e4d0d',
+    image: '/img/spotify.png',
+    imageAlt: 'Logo de Spotify'
   }
 ];
 
@@ -29,7 +50,7 @@ function Home() {
             }}
           >
             <Avatar
-              src="/avatar.jpg"
+              src="/img/avatar.jpg"
               alt="Felipe Pezoa"
               sx={{ width: 160, height: 160, boxShadow: 3 }}
             />
@@ -53,30 +74,64 @@ function Home() {
               Proyectos
             </Typography>
             <Stack spacing={2} sx={{ flex: 1 }}>
-              {projects.map((project) => (
-                <Card
-                  key={project.title}
-                >
-                  <CardActionArea component={RouterLink} to={project.to}>
-                    <CardContent>
-                      <Typography variant="h6" component="h3" gutterBottom>
-                        {project.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{
-                          textWrap: 'pretty',
-                          overflowWrap: 'anywhere',
-                          wordBreak: 'break-word'
-                        }}
+              {projects.map((project) => {
+                const actionProps = project.href
+                  ? {
+                      component: 'a',
+                      href: project.href,
+                      target: '_blank',
+                      rel: 'noopener noreferrer'
+                    }
+                  : {
+                      component: RouterLink,
+                      to: project.to
+                    };
+
+                return (
+                  <Card key={project.title} sx={{ height: '100%' }}>
+                    <CardActionArea {...actionProps}>
+                      <Stack
+                        direction={{ xs: 'column', sm: 'row' }}
+                        spacing={3}
+                        alignItems={{ xs: 'center', sm: 'flex-start' }}
+                        sx={{ textAlign: { xs: 'center', sm: 'left' }, p: { xs: 2, sm: 3 } }}
                       >
-                        {project.description}
-                      </Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              ))}
+                        {project.image && (
+                          <CardMedia
+                            component="img"
+                            image={project.image}
+                            alt={project.imageAlt ?? project.title}
+                            sx={{
+                              width: { xs: 160, sm: 120 },
+                              height: { xs: 160, sm: 120 },
+                              objectFit: 'contain',
+                              bgcolor: 'rgba(148, 163, 184, 0.12)',
+                              borderRadius: 2,
+                              p: 2
+                            }}
+                          />
+                        )}
+                        <CardContent sx={{ p: 0, '&:last-child': { pb: 0 } }}>
+                          <Typography variant="h6" component="h3" gutterBottom>
+                            {project.title}
+                          </Typography>
+                          <Typography
+                            variant="body2"
+                            color="text.secondary"
+                            sx={{
+                              textWrap: 'pretty',
+                              overflowWrap: 'anywhere',
+                              wordBreak: 'break-word'
+                            }}
+                          >
+                            {project.description}
+                          </Typography>
+                        </CardContent>
+                      </Stack>
+                    </CardActionArea>
+                  </Card>
+                );
+              })}
             </Stack>
           </Stack>
         </Grid>

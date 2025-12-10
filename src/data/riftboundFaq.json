@@ -1,49 +1,78 @@
 [
   {
     "title": "¿Qué objetivo tiene este compendio de reglas?",
-    "short_answer": "Este documento busca condensar preguntas frecuentes y responderlas basándonos en las reglas oficiales.",
+    "short_answer": "Este documento reúne dudas frecuentes y ofrece respuestas apoyadas en las reglas oficiales de Riftbound.",
     "detail_section": {
       "type": "text",
-      "text": "La intención es mantener un repositorio vivo de respuestas rápidas respaldadas por el reglamento de *Riftbound*. Si encuentras un caso no cubierto, [envía una nota](https://github.com/otro-felipe/otro-felipe.github.io/issues/new) para revisarlo en la siguiente actualización."
+      "text": "La idea es mantener un repositorio vivo de respuestas rápidas respaldadas por el reglamento de *Riftbound*. Si encuentras un caso que no esté cubierto, coméntalo en el grupo de jueces o en el chat de dudas de la comunidad **Riftbound Chile** en WhatsApp para incorporarlo en futuras actualizaciones."
     }
   },
   {
-    "title": "¿En qué orden se resuelven las reacciones encadenadas?",
-    "short_answer": "Se resuelven siguiendo el orden de prioridad indicado en la sección de reacciones, respetando primero al jugador activo.",
-    "detail_section": {
-      "type": "rule_reference",
-      "rules": [
-        {
-          "number": "453.1",
-          "text": "Cuando varias reacciones intentan resolverse al mismo tiempo, el jugador activo elige el orden."
-        },
-        {
-          "number": "453.1.a",
-          "text": "Si dos reacciones pertenecen al mismo jugador, ese jugador define la prioridad entre ellas."
-        },
-        {
-          "number": "453.1.a.1",
-          "text": "Cuando una reacción haga referencia explícita a otra, sigue la instrucción escrita sin alterar el orden general."
-        }
-      ]
-    }
-  },
-  {
-    "title": "¿Cómo se presentan las cartas con erratas vigentes?",
-    "short_answer": "Se muestran con la imagen oficial y cualquier errata asociada justo debajo para diferenciar la regla actualizada.",
-    "detail_section": {
-      "type": "card_image",
-      "cards": [
-        {
-          "url": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=400&q=80",
-          "text": "**Escudo Resonante** — Reduce el daño recibido en 2 mientras esté activo.",
-          "errata": "Errata 2024-02: El escudo ya no previene daño de efectos que no sean ataques."
-        },
-        {
-          "url": "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=400&q=80",
-          "text": "**Orbe Inestable** — Inflige 1 daño a todas las unidades adyacentes al final de tu turno."
-        }
-      ]
-    }
+    "title": "¿Cómo funciona Icathian Rain?",
+    "short_answer": "Juegas *Icathian Rain* sin objetivos, y al resolverse crea seis disparos reflexivos que luego deben elegir objetivo y hacer 2 de daño cada uno.",
+    "detail_section": [
+      {
+        "type": "text",
+        "text": "*Icathian Rain* se lanza desde tu mano sin seleccionar objetivos iniciales y pasa a la cadena, donde ambos jugadores aún pueden reaccionar. Cuando el hechizo se resuelve, eliges hasta seis objetivos y se añaden seis ítems a la cadena —cada uno hace 2 de daño a la unidad seleccionada. Es posible reaccionar antes de que aparezcan estos disparos reflexivos y también entre cada uno de ellos, pero no después del último."
+      },
+      {
+        "type": "card_image",
+        "cards": [
+          {
+            "url": "https://static.dotgg.gg/riftbound/cards/OGN-248.webp",
+            "text": "**Icathian Rain** — *Do this 6 times: Deal 2 to a unit. (You can choose different units.)*"
+          },
+          {
+            "url": "https://static.dotgg.gg/riftbound/cards/OGN-104.webp",
+            "text": "**Retreat** — *REACTION (Play any time, even before spells and abilities resolve.) Return a friendly unit to its owner's hand. Its owner channels 1 rune exhausted.*"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Al indicar “Do this 6 times”, el hechizo crea seis *Reflexive Triggers*, cada uno con el texto “Deal 2 to a unit”. Debes elegir objetivo para cada disparo: si usas o apuntas a una unidad con **Deflect**, debes pagar el costo por cada uno de los disparos que la seleccionen. Si el oponente retira una unidad con *Retreat* antes de que se resuelva *Icathian Rain*, deberás elegir entre las unidades restantes, incluso las tuyas (puedes seleccionar la misma unidad más de una vez)."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "379",
+            "text": "Reflexive Triggers"
+          },
+          {
+            "number": "380",
+            "text": "Reflexive Triggers are a type of Triggered Ability that create one or more Chain Items when their condition is met."
+          },
+          {
+            "number": "380.1",
+            "text": "Reflexive Triggers can be recognized by the phrase “Do this:” or “Do one of the following:”."
+          },
+          {
+            "number": "380.1.a",
+            "text": "“Do this” can be followed by “N times.” The Reflexive Trigger will thus be added to the chain N times when its condition is met."
+          },
+          {
+            "number": "380.2",
+            "text": "Reflexive Triggers will be preceded by their conditions, if any. If no condition is present in the ability then the Reflexive Trigger will always be added to the Chain."
+          },
+          {
+            "number": "380.3",
+            "text": "If present, the Condition of a Reflexive Trigger will follow the same format as a Triggered Ability."
+          },
+          {
+            "number": "381",
+            "text": "Reflexive Triggers use the Chain."
+          },
+          {
+            "number": "381.1",
+            "text": "A new ability is created and added to the chain as a Pending Item.\nSee rule 386. Playing or Activating Abilities for more information."
+          },
+          {
+            "number": "381.2",
+            "text": "If a Reflexive Trigger creates more than one Pending Item it creates them all in order, but does not go beyond the first step of adding them to the Chain.\nSee rule 386. Playing or Activating Abilities for more information."
+          }
+        ]
+      }
+    ]
   }
 ]

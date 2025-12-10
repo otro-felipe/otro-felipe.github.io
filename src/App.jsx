@@ -10,7 +10,7 @@ function App() {
       <CssBaseline />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/reglas-rigtbound" element={<RiftboundRules />} />
+        <Route path="/reglas-riftbound" element={<RiftboundRules />} />
       </Routes>
     </ThemeProvider>
   );

@@ -195,14 +195,25 @@ function RiftboundRules() {
             backdropFilter: 'blur(8px)'
           }}
         >
-          <Stack spacing={2}>
+          <Stack
+            spacing={2}
+            alignItems={{ xs: 'center', md: 'flex-start' }}
+            sx={{ textAlign: { xs: 'center', md: 'left' } }}
+          >
+            <Box
+              component="img"
+              src="/img/riftbound.svg"
+              alt="Logo de Riftbound"
+              sx={{ width: 96, height: 'auto' }}
+            />
             <Typography variant="h3" component="h1">
-              Reglas de Riftbound
+              FAQ Riftbound Chile
             </Typography>
             <Typography variant="body1" color="text.secondary">
               Este compendio reúne preguntas frecuentes de la comunidad y ofrece respuestas
               fundamentadas directamente en el reglamento oficial de Riftbound. La idea es convertirse
-              en una referencia rápida que puedas consultar antes de cada sesión.
+              en una referencia rápida que puedas consultar para resolver cualquier duda que surja sobre el
+              juego.
             </Typography>
           </Stack>
         </Paper>
