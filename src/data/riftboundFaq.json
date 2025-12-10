@@ -13,7 +13,7 @@
     "detail_section": [
       {
         "type": "text",
-        "text": "*Icathian Rain* se lanza desde tu mano sin seleccionar objetivos iniciales y pasa a la cadena, donde ambos jugadores aún pueden reaccionar. Cuando el hechizo se resuelve, eliges hasta seis objetivos y se añaden seis ítems a la cadena —cada uno hace 2 de daño a la unidad seleccionada. Es posible reaccionar antes de que aparezcan estos disparos reflexivos y también entre cada uno de ellos, pero no después del último."
+        "text": "*Icathian Rain* se lanza desde tu mano sin seleccionar objetivos iniciales y pasa a la cadena, donde ambos jugadores aún pueden reaccionar. Cuando el hechizo se resuelve, se añaden seis ítems a la cadena —cada uno selecciona una unidad y le hace 2 de daño al resolverse. Es posible reaccionar antes de que aparezcan estos disparos reflexivos y también entre cada uno de ellos, pero no después del último."
       },
       {
         "type": "card_image",
