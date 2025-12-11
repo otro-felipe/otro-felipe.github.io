@@ -39,6 +39,11 @@ const keywordPlaceholderRules = [
     getLabel: () => 'REACTION'
   },
   {
+    regex: /<action\s*>/gi,
+    color: 'green',
+    getLabel: () => 'ACTION'
+  },
+  {
     regex: /<shield\s*([+\d]+)?\s*>/gi,
     color: 'pink',
     getLabel: (_, value = '') => normalizeKeywordLabel('SHIELD', value)
@@ -57,6 +62,11 @@ const keywordPlaceholderRules = [
     regex: /<deflect\s*>/gi,
     color: 'bgreen',
     getLabel: () => 'DEFLECT'
+  },
+  {
+    regex: /<deathknell\s*>/gi,
+    color: 'bgreen',
+    getLabel: () => 'DEATHKNELL'
   },
   {
     regex: /<temporary\s*>/gi,

@@ -1,19 +1,19 @@
 [
   {
     "title": "¿Qué objetivo tiene este compendio de reglas?",
-    "short_answer": "Este documento reúne dudas frecuentes y ofrece respuestas apoyadas en las reglas oficiales de Riftbound.",
+    "short_answer": "**Este documento** reúne dudas frecuentes y ofrece respuestas apoyadas en las reglas oficiales de Riftbound.",
     "detail_section": {
       "type": "text",
-      "text": "Este compendio no es un documento oficial; fue creado por la comunidad para facilitar la comprensión de las reglas y, en juego organizado, la última palabra siempre la tendrá la jueza o el juez a cargo del evento. La idea es mantener un repositorio vivo de respuestas rápidas respaldadas por el reglamento de *Riftbound*. Si encuentras un caso que no esté cubierto, coméntalo en el grupo de jueces o en el chat de dudas de la comunidad **Riftbound Chile** en WhatsApp para incorporarlo en futuras actualizaciones."
+      "text": "**Este compendio no es un documento oficial**; fue creado por la comunidad para facilitar la comprensión de las reglas y, en juego organizado, **la última palabra siempre la tendrá la jueza o el juez a cargo del evento**. La idea es mantener un repositorio vivo de respuestas rápidas respaldadas por el reglamento de ***Riftbound***. Si encuentras un caso que no esté cubierto, coméntalo en el grupo de jueces o en el chat de dudas de la comunidad **Riftbound Chile** en WhatsApp para incorporarlo en futuras actualizaciones."
     }
   },
   {
     "title": "¿Cómo funciona Icathian Rain?",
-    "short_answer": "Juegas *Icathian Rain* sin objetivos, y al resolverse crea seis disparos reflexivos que luego deben elegir objetivo y hacer 2 de daño cada uno.",
+    "short_answer": "Juegas ***Icathian Rain*** sin objetivos y, al resolverse, crea **seis disparos reflexivos** que luego deben elegir objetivo y hacer 2 de daño cada uno.",
     "detail_section": [
       {
         "type": "text",
-        "text": "*Icathian Rain* se lanza desde tu mano sin seleccionar objetivos iniciales y pasa a la cadena, donde ambos jugadores aún pueden reaccionar. Cuando el hechizo se resuelve, se añaden seis ítems a la cadena —cada uno selecciona una unidad y le hace 2 de daño al resolverse. Es posible reaccionar antes de que aparezcan estos disparos reflexivos y también entre cada uno de ellos, pero no después del último."
+        "text": "***Icathian Rain*** se lanza desde tu mano sin seleccionar objetivos iniciales y pasa a la cadena, donde **ambos jugadores aún pueden reaccionar**. Cuando el hechizo se resuelve, se añaden **seis ítems a la cadena** —cada uno selecciona una unidad y le hace 2 de daño al resolverse. Es posible reaccionar antes de que aparezcan estos disparos reflexivos y también entre cada uno de ellos, pero no después del último."
       },
       {
         "type": "card_image",
@@ -30,7 +30,7 @@
       },
       {
         "type": "text",
-        "text": "Al indicar “Do this 6 times”, el hechizo crea seis *Reflexive Triggers*, cada uno con el texto “Deal 2 to a unit”. Debes elegir objetivo para cada disparo: si usas o apuntas a una unidad con **<deflect>**, debes pagar el costo por cada uno de los disparos que la seleccionen. Si el oponente retira una unidad con *Retreat* antes de que se resuelva *Icathian Rain*, deberás elegir entre las unidades restantes, incluso las tuyas (puedes seleccionar la misma unidad más de una vez)."
+        "text": "Al indicar **“Do this 6 times”**, el hechizo crea **seis *Reflexive Triggers***, cada uno con el texto “Deal 2 to a unit”. Debes elegir objetivo para cada disparo: si usas o apuntas a una unidad con **<deflect>**, debes pagar el costo por cada uno de los disparos que la seleccionen. Si el oponente retira una unidad con ***Retreat*** antes de que se resuelva ***Icathian Rain***, deberás elegir entre las unidades restantes, incluso las tuyas (puedes seleccionar la misma unidad más de una vez)."
       },
       {
         "type": "rule_reference",
@@ -77,11 +77,11 @@
   },
   {
     "title": "¿Puedo reaccionar cuando una unidad <temporary> va a morir?",
-    "short_answer": "Sí. <temporary> es una habilidad disparada, así que puedes responder antes de que la unidad salga del campo.",
+    "short_answer": "Sí. <temporary> es una **habilidad disparada**, así que puedes responder antes de que la unidad salga del campo.",
     "detail_section": [
       {
         "type": "text",
-        "text": "La palabra clave <temporary> representa un *trigger*. Cuando empieza la Fase de Comienzo de su controlador, la habilidad se agrega a la cadena y, si llega a resolverse, destruye la unidad. Mientras ese disparo esté pendiente, todavía hay ventanas para reaccionar."
+        "text": "La palabra clave <temporary> representa un **trigger**. Cuando empieza la **Fase de Comienzo** de su controlador, la habilidad se agrega a la cadena y, si llega a resolverse, destruye la unidad. Mientras ese disparo esté pendiente, todavía hay ventanas para reaccionar."
       },
       {
         "type": "card_image",
@@ -98,7 +98,7 @@
       },
       {
         "type": "text",
-        "text": "Como el trigger de <temporary> ocurre antes de puntuar, puedes reaccionar con **Shen** para que entre al battlefield donde está tu unidad con <temporary>: el permanente no muere hasta que la habilidad se resuelva, así que conservas el control mientras esperas. Del mismo modo, si hay otra unidad con 3 o menos de Might, puedes responder con *Gust* y devolverla a la mano de tu oponente para impedir que anote por *hold*."
+        "text": "Como el trigger de <temporary> ocurre **antes de puntuar**, puedes reaccionar con **Shen** para que entre al battlefield donde está tu unidad con <temporary>: el permanente no muere hasta que la habilidad se resuelva, así que conservas el control mientras esperas. Del mismo modo, si hay otra unidad con 3 o menos de Might, puedes responder con ***Gust*** y devolverla a la mano de tu oponente para impedir que anote por *hold*."
       },
       {
         "type": "rule_reference",
@@ -129,19 +129,19 @@
   },
   {
     "title": "¿Qué pasa si olvido un trigger?",
-    "short_answer": "Si fue en el turno actual, el siguiente jugador decide si te deja resolverlo; aun así el juego cuenta el trigger y puede implicar un warning.",
+    "short_answer": "Si fue en el turno actual, **el siguiente jugador decide** si te deja resolverlo; aun así el juego cuenta el trigger y puede implicar un warning.",
     "detail_section": [
       {
         "type": "text",
-        "text": "Para que un trigger olvidado pueda resolverse tarde, debes detectarlo antes de que termine el mismo turno en que ocurrió. En ese caso, el siguiente jugador en el orden de turnos elige si permite que se resuelva inmediatamente o si continúa sin él. Si el trigger todavía no ha afectado al juego, la decisión final sobre permitirlo recae en la jueza o el juez responsable."
+        "text": "**Para que un trigger olvidado pueda resolverse tarde**, debes detectarlo antes de que termine el mismo turno en que ocurrió. En ese caso, **el siguiente jugador en el orden de turnos elige** si permite que se resuelva inmediatamente o si continúa sin él. Si el trigger todavía no ha afectado al juego, la decisión final sobre permitirlo recae en la jueza o el juez responsable."
       },
       {
         "type": "text",
-        "text": "Si el trigger beneficiaba a tu oponente, omitirlo te deja con un [Warning]. En torneos casuales se anima a los jugadores a permitir la resolución atrasada, pero en eventos *High OPL* no existe esa obligación."
+        "text": "Si el trigger beneficiaba a tu oponente, omitirlo te deja con un **[Warning]**. En torneos casuales se anima a los jugadores a permitir la resolución atrasada, pero en eventos *High OPL* no existe esa obligación."
       },
       {
         "type": "text",
-        "text": "Incluso cuando el trigger no se ejecuta, el juego lo considera como si hubiese ocurrido para otros efectos que cuenten la cantidad de veces que se dispara o que chequeen si el trigger ya se ha disparado antes. Los triggers olvidados se clasifican como *missed triggers*, un subtipo de *Gameplay Error*."
+        "text": "Incluso cuando el trigger no se ejecuta, el juego lo considera como si hubiese ocurrido para otros efectos que cuenten la cantidad de veces que se dispara o que chequeen si el trigger ya se ha disparado antes. Los triggers olvidados se clasifican como **missed triggers**, un subtipo de *Gameplay Error*."
       },
       {
         "type": "rule_reference",
@@ -183,6 +183,186 @@
             "text": "Otherwise, the next opponent in turn order of the player who missed the trigger chooses whether to resolve the trigger immediately or miss it altogether."
           }
         ]
+      }
+    ]
+  },
+  {
+    "title": "¿Puedo jugar una carta <action> y luego una <reaction>?",
+    "short_answer": "Sí. Tras poner la carta <action> en la cadena puedes **mantener prioridad** y, en la ejecución, añadir tu <reaction> antes de que el oponente responda.",
+    "detail_section": [
+      {
+        "type": "text",
+        "text": "Cuando juegas una carta <action>, la cadena está vacía y tú controlas el nuevo ítem, por lo que **eres la persona activa**. Si declaras que mantienes prioridad, procedes directamente al Paso 2 antes de que tu oponente reciba la suya. Aunque el paso se llame **“Finalize”**, es el primero que se ejecuta y es donde el ítem pasa de **pendiente a finalizado**."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "333",
+            "text": "Step 1: Finalize"
+          },
+          {
+            "number": "333.1",
+            "text": "If one or more Items are Pending, their controllers must complete the steps of Playing those Pending Items until they are Finalized Items or leave the Chain."
+          },
+          {
+            "number": "333.1.a",
+            "text": "This process does not pass Priority."
+          },
+          {
+            "number": "333.1.b",
+            "text": "Each Item is Finalized in the order it was appended to the Chain."
+          },
+          {
+            "number": "333.1.c",
+            "text": "Abilities that Add resources, Units, and Gear resolve immediately when Finalized and do not progress to Step 2: Execute. See rule 346. Playing Cards for more information."
+          },
+          {
+            "number": "333.1.c.1",
+            "text": "If the Chain is empty, play proceeds in an Open State."
+          },
+          {
+            "number": "333.1.c.2",
+            "text": "If the Chain is not empty and there are one or more Pending Items, repeat Step 1."
+          },
+          {
+            "number": "333.1.c.3",
+            "text": "If the Chain is not empty and there are no Pending Items, the controller of the newest item on the chain gains Priority and becomes the Active Player. Proceed to Step 2: Execute."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Con la <action> finalizada y tú como jugador activo, el Paso 2 te permite jugar cualquier carta legal para ese momento. El nombre **“Execute” no significa que el spell se resuelva ahí**; significa que la persona activa ejecuta una acción antes de que se resuelva el ítem más reciente. Como la cadena sigue abierta, las únicas cartas legales adicionales son las que tengan <reaction>."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "334",
+            "text": "Step 2: Execute"
+          },
+          {
+            "number": "334.1",
+            "text": "The Active Player may do any the following:"
+          },
+          {
+            "number": "334.1.a",
+            "text": "Play a Card that is legally timed."
+          },
+          {
+            "number": "334.1.a.1",
+            "text": "Cards, by default, cannot be played during a Closed State."
+          },
+          {
+            "number": "334.1.a.2",
+            "text": "A Legally Timed Card would be a Card with Reaction."
+          },
+          {
+            "number": "334.1.a.3",
+            "text": "Other exceptions may be created during regular play."
+          },
+          {
+            "number": "334.1.a.4",
+            "text": "The card will be added to the chain as a Pending Item, following the steps of playing a card."
+          },
+          {
+            "number": "334.1.a.5",
+            "text": "This can be an additional card to the item that Started the Chain in the case of the first Active Player after creating the Chain."
+          },
+          {
+            "number": "334.1.a.6",
+            "text": "Whether a Card is legally timed is evaluated during the “Check Legality” step of Playing a Card. See rule 346. Playing Cards for more information."
+          },
+          {
+            "number": "334.1.a.7",
+            "text": "Playing a card will create one or more Pending Items. Return to Step 1: Finalize."
+          },
+          {
+            "number": "334.1.b",
+            "text": "Activate Abilities of Game Objects that are legally timed. See rule 386. Playing or Activating Abilities for more information."
+          },
+          {
+            "number": "334.1.b.1",
+            "text": "All rules for legally timed cards apply to legally timed abilities."
+          },
+          {
+            "number": "334.1.b.2",
+            "text": "Activating abilities will create one or more Pending Items. Return to Step 1: Finalize."
+          },
+          {
+            "number": "334.1.c",
+            "text": "Pass Priority"
+          },
+          {
+            "number": "334.1.c.1",
+            "text": "The Active Player passes Priority to the next Player in Turn Order. Proceed to Step 3: Pass."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Una vez que agregas tu <reaction>, el juego regresa al Paso 1 para finalizarla, y la prioridad vuelve a estar de tu lado. Puedes seguir **manteniéndola hasta decidir pasar**."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "335",
+            "text": "Step 3: Pass"
+          },
+          {
+            "number": "335.1",
+            "text": "If all players have passed Priority without adding any items to the Chain, proceed to Step 4: Resolve."
+          },
+          {
+            "number": "335.2",
+            "text": "Otherwise, the Active Player passes Priority to the next Player in Turn Order. Return to Step 2: Execute."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Después de que pases por primera vez, **tu oponente recibe su oportunidad en el Paso 2** y recién entonces puede responder con su propia <reaction>."
+      }
+    ]
+  },
+  {
+    "title": "¿Puedo reaccionar a la mitad de una cadena?",
+    "short_answer": "Sí. Cada vez que un ítem se resuelve, **el controlador del siguiente ítem recibe prioridad** y puede jugar una <reaction> antes de continuar.",
+    "detail_section": [
+      {
+        "type": "text",
+        "text": "Cuando un ítem termina de resolverse, la cadena puede quedar con más elementos. En ese caso, la persona que controla el ítem más reciente obtiene **prioridad** y vuelve al Paso 2, con la opción de jugar reacciones antes de que el juego avance."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "336",
+            "text": "Step 4: Resolve"
+          },
+          {
+            "number": "336.1",
+            "text": "The newest item on the Chain resolves. Execute its game effects in their entirety. See rule 346. Playing Cards for more information on resolving spells. See rule 386. Playing or Activating Abilities for more information on resolving abilities."
+          },
+          {
+            "number": "336.2",
+            "text": "If the Chain is empty, play proceeds in an Open State."
+          },
+          {
+            "number": "336.3",
+            "text": "If the Chain is not empty and there are one or more Pending Items, return to Step 1: Finalize."
+          },
+          {
+            "number": "336.4",
+            "text": "If the Chain is not empty and there are no Pending Items, the controller of the newest item on the chain gains Priority and becomes the Active Player. Return to Step 2: Execute."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Este bucle de **Finalizar, Ejecutar y Pasar** se repite mientras existan ítems pendientes, así que cada resolución abre una nueva ventana para jugar <reaction> o activar habilidades de tiempo legal antes de que la cadena continúe."
       }
     ]
   }
