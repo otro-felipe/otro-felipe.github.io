@@ -435,7 +435,7 @@
       },
       {
         "type": "text",
-        "text": "La diferencia clave es que un objetivo inválido deja al hechizo sin referencia para confirmar quién iba a robar, mientras que un reemplazo mantiene la información del controlador disponible cuando el efecto consulta a quién le entrega las cartas."
+        "text": "La diferencia clave es que un objetivo inválido deja al hechizo sin referencia para confirmar quién iba a robar, mientras que un reemplazo que mueve la unidad dentro del campo mantiene la información del controlador disponible cuando el efecto consulta a quién le entrega las cartas."
       }
     ]
   }
