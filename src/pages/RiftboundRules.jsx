@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SearchIcon from '@mui/icons-material/Search';
 import {
@@ -121,6 +121,36 @@ const normalizeSections = (section) => {
   return Array.isArray(section) ? section : [section];
 };
 
+const createEntryAnchorId = (title = '') => {
+  if (!title) return '';
+  return `faq-${title
+    .toString()
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '')}`;
+};
+
+const sanitizeHash = (hash = '') => String(hash ?? '').replace(/^#/, '');
+
+const setUrlHash = (hash = '') => {
+  if (typeof window === 'undefined' || !window.history?.replaceState) return;
+  const sanitized = sanitizeHash(hash);
+  const { pathname, search } = window.location;
+  const nextUrl = sanitized ? `${pathname}${search}#${sanitized}` : `${pathname}${search}`;
+  window.history.replaceState(null, '', nextUrl);
+};
+
+const scrollToAnchor = (hash = '') => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') return;
+  const target = document.getElementById(sanitizeHash(hash));
+  if (target) {
+    window.requestAnimationFrame(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+};
+
 const RuleReferenceSection = ({ rules }) => {
   if (!rules?.length) return null;
 
@@ -129,7 +159,6 @@ const RuleReferenceSection = ({ rules }) => {
       {rules.map((rule) => {
         const indentLevel = (rule.number.match(/\./g) || []).length;
         const textIndent = indentLevel * 2;
-
         return (
           <Grid
             key={rule.number}
@@ -245,16 +274,36 @@ function RiftboundRules() {
   const [openItems, setOpenItems] = useState(() => new Set());
   const [searchTerm, setSearchTerm] = useState('');
 
-  const toggleItem = (id) => {
+  const toggleItem = (id, anchorId) => {
+    let wasOpen = false;
+    let isOpening = false;
+
     setOpenItems((prev) => {
       const next = new Set(prev);
-      if (next.has(id)) {
+      wasOpen = next.has(id);
+
+      if (wasOpen) {
         next.delete(id);
       } else {
         next.add(id);
+        isOpening = true;
       }
       return next;
     });
+
+    if (typeof window === 'undefined') return;
+
+    const hashValue = sanitizeHash(anchorId);
+
+    if (isOpening && hashValue) {
+      setUrlHash(hashValue);
+      scrollToAnchor(hashValue);
+    } else if (!isOpening && wasOpen) {
+      const currentHash = sanitizeHash(window.location.hash);
+      if (currentHash === hashValue) {
+        setUrlHash('');
+      }
+    }
   };
 
   const entries = useMemo(() => faqEntries, []);
@@ -306,6 +355,42 @@ function RiftboundRules() {
       return combined.includes(normalizedSearch);
     });
   }, [entries, normalizedSearch]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    let locationHash = window.location.hash || '';
+    try {
+      locationHash = decodeURIComponent(locationHash);
+    } catch (error) {
+      // Ignore malformed URI sequences and fall back to the raw hash.
+    }
+
+    const rawHash = sanitizeHash(locationHash);
+    if (!rawHash) return;
+
+    const matchingEntry = entries.find((entry) => {
+      const titleContent = entry.title ?? '';
+      const plainTitle = markdownToPlainText(titleContent, { mode: 'general' });
+      const entryId = plainTitle || titleContent;
+      const anchorId = createEntryAnchorId(entryId);
+      return anchorId === rawHash;
+    });
+
+    if (!matchingEntry) return;
+
+    const titleContent = matchingEntry.title ?? '';
+    const plainTitle = markdownToPlainText(titleContent, { mode: 'general' });
+    const entryId = plainTitle || titleContent;
+    setOpenItems((prev) => {
+      if (prev.has(entryId)) return prev;
+      const next = new Set(prev);
+      next.add(entryId);
+      return next;
+    });
+
+    scrollToAnchor(rawHash);
+  }, [entries]);
 
   return (
     <>
@@ -406,9 +491,10 @@ function RiftboundRules() {
             const isOpen = openItems.has(entryId);
             const detailSections = normalizeSections(entry.detail_section);
             const panelId = `question-details-${index}`;
+            const anchorId = createEntryAnchorId(entryId);
 
             return (
-              <Card key={entryId}>
+              <Card key={entryId} id={anchorId || undefined}>
                 <CardContent>
                   <Stack direction="row" spacing={2} alignItems="flex-start">
                     <Box sx={{ flex: 1 }}>
@@ -425,7 +511,7 @@ function RiftboundRules() {
                       />
                     </Box>
                     <IconButton
-                      onClick={() => toggleItem(entryId)}
+                      onClick={() => toggleItem(entryId, anchorId)}
                       aria-label={isOpen ? 'Ocultar detalles' : 'Mostrar detalles'}
                       aria-expanded={isOpen}
                       aria-controls={panelId}
