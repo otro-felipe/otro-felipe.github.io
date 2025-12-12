@@ -365,5 +365,78 @@
         "text": "Este bucle de **Finalizar, Ejecutar y Pasar** se repite mientras existan ítems pendientes, así que cada resolución abre una nueva ventana para jugar <reaction> o activar habilidades de tiempo legal antes de que la cadena continúe."
       }
     ]
+  },
+  {
+    "title": "Hidden Blade vs Fight or Flight vs Zhonya's: ¿Cuándo el controlador roba?",
+    "short_answer": "Robas solo si la unidad sigue en el campo cuando se resuelve ***Hidden Blade*** — por ejemplo, porque un reemplazo como ***Zhonya's Hourglass*** la mantiene; si deja el battlefield antes, el hechizo pierde al objetivo y nadie roba.",
+    "detail_section": [
+      {
+        "type": "text",
+        "text": "***Hidden Blade*** entra a la cadena con una unidad objetivo. Si antes de que se resuelva usas ***Fight or Flight*** u otro efecto que la envíe a la base, esa unidad se vuelve un objetivo ilegal y el hechizo ya no tiene forma de determinar a su controlador para entregar las cartas."
+      },
+      {
+        "type": "card_image",
+        "cards": [
+          {
+            "url": "https://static.dotgg.gg/riftbound/cards/OGN-213.webp",
+            "text": "**Hidden Blade** — *<hidden> (Hide now for rune to react with later for 0.) <action> (Play on your turn or showdowns.) Kill a unit at a battlefield, Its controller draws 2.*"
+          },
+          {
+            "url": "https://static.dotgg.gg/riftbound/cards/OGN-168.webp",
+            "text": "**Fight or Flight** — *<hidden> (Hide now for rune to react with later for 0.) <action> (Play on your turn or in showdowns.) Move a unit from a battlefield to its base.*"
+          },
+          {
+            "url": "https://static.dotgg.gg/riftbound/cards/OGN-077.webp",
+            "text": "**Zhonya's Hourglass** — *<hidden> (Hide for now rune to react with later for 0.) If a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it. (Send it to base. This isn't a move.)*"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "Con ***Fight or Flight***, la unidad pasa de un campo a la base antes de que el hechizo intente matarla. Al cambiar de zona deja de cumplir los requisitos y se convierte en un objetivo ilegal, así que al resolverse ***Hidden Blade*** la verificación del controlador devuelve \"null\" y nadie roba."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "356.3.e",
+            "text": "Handling illegal and impossible instructions."
+          },
+          {
+            "number": "356.3.e.1",
+            "text": "The spell resolves even if some or all of its targets are illegal."
+          },
+          {
+            "number": "356.3.e.2",
+            "text": "A target is illegal as the spell resolves if it no longer meets the targeting requirements of the spell, or if it has changed Zones to or from a Non-Board Zone."
+          },
+          {
+            "number": "356.3.e.12",
+            "text": "If the spell checks information about a target that is no longer legal or a card or permanent whose location, zone, or status has changed such that that information is no longer available, that check returns \"null\" and all calculations based on it are ignored."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "***Zhonya's Hourglass*** aplica un reemplazo: mata al artefacto en lugar de la unidad, la cura, la agota y la devuelve a la base con su mismo controlador. Como la unidad no abandona el battlefield hasta después de que se identifica a su controlador, ***Hidden Blade*** mantiene un objetivo válido y ese jugador roba las cartas."
+      },
+      {
+        "type": "rule_reference",
+        "rules": [
+          {
+            "number": "183",
+            "text": "Control is the concept of a player having influence of a Game Object and applies differently to different card types."
+          },
+          {
+            "number": "185.3",
+            "text": "For Permanents and Runes, when they Enter the Board, that player is assigned as that Game Object's Controller."
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "text": "La diferencia clave es que un objetivo inválido deja al hechizo sin referencia para confirmar quién iba a robar, mientras que un reemplazo mantiene la información del controlador disponible cuando el efecto consulta a quién le entrega las cartas."
+      }
+    ]
   }
 ]

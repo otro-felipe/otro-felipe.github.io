@@ -44,6 +44,11 @@ const keywordPlaceholderRules = [
     getLabel: () => 'ACTION'
   },
   {
+    regex: /<hidden\s*>/gi,
+    color: 'green',
+    getLabel: () => 'HIDDEN'
+  },
+  {
     regex: /<shield\s*([+\d]+)?\s*>/gi,
     color: 'pink',
     getLabel: (_, value = '') => normalizeKeywordLabel('SHIELD', value)
